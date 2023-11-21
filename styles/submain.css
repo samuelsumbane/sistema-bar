@@ -1,0 +1,3 @@
+body{position:fixed;width:100%;height:100%;background:gray;transition: 0.5s}#notificationInfo{position:absolute;width:300px;height:auto;max-height:400px;background:rgba(240, 9, 9, 0.151);border:1px solid red;right:15px;bottom:15px;overflow-y:auto;transition: 0.8s;}#closeNotInfo{position:relative;font-size:35px;left:92%;bottom:5px;color:black}#closeNotInfo:hover{cursor:pointer}#notificationInfo div{width:90%;background:green;text-align: center;height:40%;overflow: auto;}#notificationInfo::-webkit-scrollbar{background:rgba(255,0,0,.3)}#notificationInfo::-webkit-scrollbar-thumb{background:red}
+
+@media screen and (max-width: 720px){#notificationInfo{width:80% !important}#notificationInfo::-webkit-scrollbar-thumb{background:gray;height:30px !important}}
