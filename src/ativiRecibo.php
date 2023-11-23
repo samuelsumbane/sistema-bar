@@ -59,9 +59,9 @@ body{display:fixed;width:100%;height:100%;}
 
 <div id="subbody">
 
-    <div id="leftside" style="width:65%;">
+    <div id="leftside" style="width:65%">
 
-        <div class="parentMainDiv" id="parentMainDiv" style="width:570px;height:800px;background:white;margin:2% auto 0 auto;display:flex;flex-direction:column;">
+        <div class="parentMainDiv" id="parentMainDiv" style="width:570px;height:800px;background:white;margin:2% auto 0 auto;display:flex;flex-direction:column">
             
             <div id="topdiv" style="width:98%;height:10%;background:white;margin:auto;margin-top:30px;display:flex">
                 <h4 id="Dados" style="padding-left:10px">Relatório</h4>
@@ -70,7 +70,15 @@ body{display:fixed;width:100%;height:100%;}
 
             <div id="maindiv" style="width:95%;background:white;margin:30px auto 0 auto;display:flex;flex-direction:column" >
 
-                <div class="rec" style="width:98%;background:white;border:2px solid black;border-radius:0 0 5px 5px ;margin:0 auto 0 auto;">
+            <input type="hidden" name="" id="dateinicial" value="<?php echo $_GET["printdateinicial"] ?>">
+            <input type="hidden" name="" id="datefinal" value="<?php echo $_GET["printdatefinal"] ?>">
+
+            <?php
+                $totalsaida = 0;
+                $proArray = [];
+                // $dados = $p->selectActiRec($_GET["printdateinicial"], $_GET["printdatefinal"]);
+            ?>
+                <div class="rec" id="recdiv" style="width:98%;background:white;border:2px solid black;border-radius:0 0 5px 5px ;margin:0 auto 0 auto;">
                     <table style="width:98%;border-collapse:collapse;margin:auto;margin-top:7px">
                     <tr style="background:lightgray;">
                         <th style="width:15%">Accão</th>
@@ -81,38 +89,22 @@ body{display:fixed;width:100%;height:100%;}
                         <th style="width:20%">Data</th>
                         <th style="width:10%">Hora</th>
                     </tr>
-                    <?php
-                        $totalsaida = 0;
-                        $dados = $p->selectActiRec($_GET["printdateinicial"], $_GET["printdatefinal"]);
-                        if(count($dados) > 0){
-                            $totalent = 0;
-                            $totals = 0;
-                            for ($i=0; $i < count($dados); $i++){
-                                echo "<tr>";
-                                foreach($dados[$i] as $k => $v){
-                                    if($dados[$i]["accao"] != "Login" and $dados[$i]["accao"] != "Logout"){
-                                        if($k != "id" and $k != "validade" and $k !="usuario" ){
-                                        ?><td style="width:10%;padding-left:10px;"><?php echo $v ?></td><?php
-                                        } 
-                                    }     
-                                }
-                                echo "<tr>";
-                                if($dados[$i]["totalpago"] != "-"){
-                                    if($dados[$i]["accao"] == "Stock"){
-                                       $totals += $dados[$i]["totalpago"];
-                                       $totalsaida = number_format($totals, 2);
-                                    }else if($dados[$i]["accao"] == "Venda"){
-                                       $totalent += $dados[$i]["totalpago"];
-                                       $totalentrada = number_format($totalent, 2);
-                                    }
-                                }
-                            }
-                        }
-                    ?>
+                    <tbody id="tbodyActivitiesList"></tbody>
+            
                     </table>
                     <br><br>
-                    <p style="padding-left:8px">Valor total de vendas: &nbsp <strong><?php echo $totalentrada ?></strong> MT</p>
-                    <p style="padding-left:8px">Valor total de stock recebido: &nbsp &nbsp &nbsp <strong><?php echo $totalsaida ?></strong> MT</p>
+
+                    <!-- tabela de producto e quantidade total -->
+                    <table style="width:98%;border-collapse:collapse;margin:auto;margin-top:7px">
+                        <tr style="background:lightgray;"><th>Producto</th><th>Quantidade</th> <th>Valor total</th></tr>
+                        <tbody id="tbodyproandqtd"></tbody>
+                    </table>
+
+                    <br><br>
+
+                    <!-- <p style="padding-left:8px">Valor total de vendas: &nbsp <strong><?php echo $totalentrada ?></strong> MT</p>
+                    <p style="padding-left:8px">Valor total de stock recebido: &nbsp &nbsp &nbsp <strong><?php echo $totalsaida ?></strong> MT</p> -->
+
                 </div>
             </div>
             <!-- bottom -->
@@ -132,7 +124,10 @@ body{display:fixed;width:100%;height:100%;}
 
     </div>
 
+    <script src="../scripts/jquery-3.3.1.js"></script>
+    <script src="../scripts/ativiRecibo.js"></script>
 
 </body>
-</body>
+
+
 </html>

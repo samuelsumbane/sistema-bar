@@ -251,6 +251,14 @@ class CrudAll{
       $query = $this->pdo->query("SELECT mes as dayname, SUM(lucro) as amount FROM controlodevendas WHERE ano='$seletedDateBegin' AND mes = '$seletedDateFinal' group by dayname ");
       return $query;
     }
+    // SELECT producto as proname, SUM(quantidade) as amount FROM activities WHERE dia >='2023-11-21' AND dia <='2023-11-21' group by proname
+
+    function actirecs($seletedDateBegin, $seletedDateFinal){ 
+      $query = $this->pdo->prepare("SELECT accao, producto as proname, SUM(quantidade) as qtd, SUM(totalpago) as amount FROM activities WHERE dia >='$seletedDateBegin' AND dia <='$seletedDateFinal' group by proname ");
+      $query->execute();
+      $result = $query->fetchAll(PDO::FETCH_ASSOC);
+      return $result;
+    }
 
     function saveDef($li){
       $q = $this->pdo->prepare("INSERT INTO definicoes(limiteinfe) VALUES(:li)");
