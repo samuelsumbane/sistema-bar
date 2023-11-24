@@ -254,7 +254,7 @@ class CrudAll{
     // SELECT producto as proname, SUM(quantidade) as amount FROM activities WHERE dia >='2023-11-21' AND dia <='2023-11-21' group by proname
 
     function actirecs($seletedDateBegin, $seletedDateFinal){ 
-      $query = $this->pdo->prepare("SELECT accao, producto as proname, SUM(quantidade) as qtd, SUM(totalpago) as amount FROM activities WHERE dia >='$seletedDateBegin' AND dia <='$seletedDateFinal' group by proname ");
+      $query = $this->pdo->prepare("SELECT accao, producto as proname, SUM(quantidade) as qtd, SUM(totalpago) as amount FROM activities WHERE dia >='$seletedDateBegin' AND dia <='$seletedDateFinal' AND accao == 'Venda' group by proname ");
       $query->execute();
       $result = $query->fetchAll(PDO::FETCH_ASSOC);
       return $result;
