@@ -7,6 +7,8 @@ let intervaloDeTempo = 1000; // Intervalo de tempo em milissegundos entre os car
 let indiceInicial = 0; // Índice inicial para carregamento dos registros
 let totalRegistros = 0; // Armazena o total de registros disponíveis
 
+let totaldeentrada = 0; let totaldesaida = 0       
+
 function carregarMaisRegistros(data) {
     if (data && Array.isArray(data)) {
         // Se não houver mais dados, pare o intervalo
@@ -14,7 +16,6 @@ function carregarMaisRegistros(data) {
             clearInterval(intervalo);
             return;
         }
-        let totaldeentrada = 0; let totaldesaida = 0       
         for (let i = indiceInicial; i < indiceInicial + registrosPorPagina; i++) {
             // Certifique-se de que há dados suficientes para carregar
             if (data[i]) {
@@ -34,11 +35,13 @@ function carregarMaisRegistros(data) {
         // Atualize o índice inicial para o próximo conjunto de registros
         indiceInicial += registrosPorPagina;
         //
-        document.querySelector("#recdiv").innerHTML += ` <p style="padding-left:8px">Valor total de vendas: &nbsp <strong> ${parseFloat(totaldeentrada).toFixed(2)} </strong> MT</p>
-        <p style="padding-left:8px">Valor total de stock recebido: &nbsp &nbsp &nbsp <strong> ${parseFloat(totaldesaida).toFixed(2)} </strong> MT</p> `
     }
 }
 
+function exibirTotais() {
+    document.querySelector("#recdiv").innerHTML += ` <p style="padding-left:8px">Valor total de vendas: &nbsp <strong> ${parseFloat(totaldeentrada).toFixed(2)} </strong> MT</p>
+    <p style="padding-left:8px">Valor total de stock recebido: &nbsp &nbsp &nbsp <strong> ${parseFloat(totaldesaida).toFixed(2)} </strong> MT</p> `
+}
 
 // Chame a função inicialmente para obter o total de registros e carregar os primeiros registros
 $.ajax({
@@ -50,6 +53,11 @@ $.ajax({
         totalRegistros = data.length;
         // Chame a função para carregar os primeiros registros
         carregarMaisRegistros(data);
+        if (indiceInicial >= totalRegistros) {
+            exibirTotais();
+            clearInterval(intervalo);
+        }
+
     }, error: function () {
         alert("Erro inesperado, por favor actualize a pagina. Se o esse erro continuar contacte o gestor/programador.");
     }
@@ -66,7 +74,10 @@ let intervalo = setInterval(function() {
         success: function (data) {
             // Chame a função para carregar mais registros
             carregarMaisRegistros(data);
-            // console.log(data)
+            if (indiceInicial >= totalRegistros) {
+                exibirTotais();
+                clearInterval(intervalo);
+            }
         }, error: function () {
             alert("Erro inesperado, por favor actualize a pagina. Se o esse erro continuar contacte o gestor/programador.");
         }
