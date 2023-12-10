@@ -1,5 +1,6 @@
 <?php
 require_once("classCrud.php");
+include 'phpfuncoes.php';
 
 class Bar extends CrudAll{
 
@@ -147,6 +148,7 @@ class Bar extends CrudAll{
         $this->saveActivity("Venda", $produto, $pesoliquido, $quantidade, $valortotal, $usernamelogged, $this->retornarData(), $this->retornarHora(), $this->venciDate());
         $this->gravarVendas($produto, $pesoliquido, $quantidade, $valorcusto, $valorunico, $valortotal, $desconto, $lucro, $currentMonthStr, $currentYear);
         $this->increaseStock($quantidade, $quantidade, $codetd);
+        makeDBBackup();
 
     }
 
@@ -186,7 +188,7 @@ class Bar extends CrudAll{
             // $this->gravarProducto($codigoRandomizado, $produto, $pl, $vcutd, $vvutd, $barCode);
             $this->saveActivity("Stock", $produto, $pl, $qtd, $tpptd, $usernamelogged, $this->retornarData(), $this->retornarHora(), $this->venciDate());
         }
-        
+        makeDBBackup();
 
     }
 
@@ -219,7 +221,7 @@ class Bar extends CrudAll{
                 // $this->atualizarProducto($produto, $pl, $vcu, $vvu, $barCode, $codigo);
                 $this->saveActivity("Stock", $produto, $pl, $qtd, $tp, $usernamelogged, $this->retornarData(), $this->retornarHora(), $this->venciDate());
             }
-
+            makeDBBackup();
 
         }
      
@@ -243,6 +245,7 @@ class Bar extends CrudAll{
             $pl = $_POST["plPro"];
             $barcode = $_POST["barcodeinput"];
             $this->createPromo($proname, $proCode, $nGarafas, $vPromo, $pl, $barcode);
+            makeDBBackup();
         }
     }
 

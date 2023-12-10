@@ -55,9 +55,8 @@
          "quantidade"=>$row["quantidade"],
          "totalpago"=>$row["totalpago"],
          "usuario"=>$row['usuario'],
-         "data"=>$row['dia'],
+         "dia"=>$row['dia'],
          "hora"=>$row['hora']
-        
       );
    }
    // Response

@@ -14,7 +14,7 @@ $(document).ready(function () {
         { data: "quantidade" },
         { data: "totalpago" },
         { data: "usuario" },
-        { data: "data" },
+        { data: "dia" },
         { data: "hora" }
       ],
       "oLanguage": {
@@ -40,9 +40,6 @@ $(document).ready(function () {
       $("#bg-modal").css("top", "-100%")
       $(".trtable").remove()
     })
-
-  
-  
   
     $("#relatorioPage").click(function(){
       var bgModal = document.querySelector(".bg-modal");

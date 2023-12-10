@@ -42,7 +42,7 @@ $(document).ready(function () {
   }
 
   selectpros()
-  $("#cancelPurchase").click(() => { $("#bg-modal").css("top", "-100%"); $(".trtable").remove(); $('.trtablefake').remove(); document.querySelector("#qtddpro").innerHTML = "";document.querySelector("#trocoText").textContent = ""; removeAllStoragecodes();barcode = '';bInput = '';barcodeC = 0;
+  $("#cancelPurchase").click(() => { $("#bg-modal").css("top", "-100%"); $(".trtable").remove(); $('.trtablefake').remove(); document.querySelector("#qtddpro").innerHTML = "";document.querySelector("#trocoText").textContent = ""; removeAllStoragecodes();barcode = '';bInput = '';barcodeC = 0;$("#totalPago").val('');
 });
 
 
