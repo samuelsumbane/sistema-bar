@@ -14,3 +14,5 @@ if($_POST["inicialdate"] && $_POST["finaldate"]){
         echo json_encode($dadosdeprocomqtd);
     }
 }
+
+

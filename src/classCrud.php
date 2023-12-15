@@ -193,8 +193,7 @@ class CrudAll{
           $actId = $sallact[$i]["accao"];
           $this->delRec("activities", "id", $actId);
         }
-      }
-      
+      } 
     }
 
     public function delRec($table, $row, $value){$cmd = $this->pdo->prepare("DELETE FROM $table WHERE $row = :valor");$cmd->bindValue(":valor", $value);$cmd->execute();}
