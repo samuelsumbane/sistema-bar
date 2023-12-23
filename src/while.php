@@ -3,19 +3,6 @@
 require_once('classCrud.php');
 $p = new CrudAll;
 
-$inicial = addslashes('2023-11-01');
-$final = addslashes('2023-11-01');
-
-$query = $p->con()->prepare("SELECT accao as acao, SUM(totalpago) as amout  from activities where dia >='$inicial' AND dia <='$final' and acao = 'Venda' or acao ='Stock' group by acao");
-$query->execute();
-$result = $query->fetchAll(PDO::FETCH_ASSOC);
-// echo json_encode($result);
-print_r($result);
-
-
-
-
-
 
 //     // $this->saveActivity("Venda", $produto, $pesoliquido, $quantidade, $valortotal, $usernamelogged, $this->retornarData(), $this->retornarHora(), $this->venciDate());
 

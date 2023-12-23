@@ -14,7 +14,6 @@ ob_start();
 $data = date('d/m/Y');
 $hora = date('H:i');
 
-
 ?>
 
 <!DOCTYPE html>
@@ -65,7 +64,7 @@ $hora = date('H:i');
                                     $idenfier++;
                                     $dadoscodigo = $p->selectRecord('remessarecs', 'id', $idenfier);
                                     if($dadoscodigo != false){
-                                        $dadoscodigoId = $dadoscodigo['id'];                                    
+                                        $dadoscodigoId = $dadoscodigo['id'];              
                                     }
                                 }
                                 ?>

@@ -4,6 +4,7 @@ include "menu.php";
 require_once('classCrud.php');
 require_once "conexao.php";
 require_once 'funcoes.php';
+require_once 'phpfuncoes.php';
 
 $p = new CrudAll;
 $func = new Funcoes;
@@ -18,9 +19,10 @@ if((!isset($_SESSION['id'])) && (!$_SESSION['nome'])){
 $data = date('d/m/Y');
 $hora = date('H:i');
 
-$dataatualPAmerican = date('Y-m-d');
-$p->delActivity($dataatualPAmerican);
+// $dataatualPAmerican = date('Y-m-d');
+// $p->delActivity($dataatualPAmerican);
 
+delActivitiesAuto();
 ?>
 
 <!DOCTYPE html>

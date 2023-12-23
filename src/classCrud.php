@@ -184,18 +184,6 @@ class CrudAll{
       $cmd->execute();
     }
 
-    // should del it!
-    function delActivity($val){
-      $sallact = $this->selectRecords("activities", "validade", $val);
-      $tsallact = count($sallact);
-      for($i=0;$i<$tsallact;$i++){
-        if($sallact[$i]["accao"] == "Login" || $sallact[$i]["accao"] == "Logout"){
-          $actId = $sallact[$i]["accao"];
-          $this->delRec("activities", "id", $actId);
-        }
-      } 
-    }
-
     public function delRec($table, $row, $value){$cmd = $this->pdo->prepare("DELETE FROM $table WHERE $row = :valor");$cmd->bindValue(":valor", $value);$cmd->execute();}
 
     function actualizarStock($pro, $pl, $qtd, $vcu, $vvu, $tp, $st, $barcode, $code){

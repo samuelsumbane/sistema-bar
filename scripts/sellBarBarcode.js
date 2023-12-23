@@ -72,7 +72,6 @@ document.addEventListener("keydown", function (e) {
                         document.querySelector("#qtddpro").innerHTML = `Total de productos por unidade ${srestante}`
         
                         calcProCost(barcodeC, thisproCode)
-    
                     }
                     //
                 } else {

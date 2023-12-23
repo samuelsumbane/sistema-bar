@@ -14,7 +14,6 @@ $diadevencimento = "";
 
 
 function verificarVencimento($codedafatura){
-
     // $resId = $p->buscarDadosPorId("controlodefatura", $iddafatura);
     $res = $p->buscarDadosPessoa("clientes", $codedafatura);
 
@@ -24,9 +23,6 @@ function verificarVencimento($codedafatura){
     echo $codigodocliente;
     echo "<br>";
     echo "$nomedocliente";
-
-
-
 }
 
 function dig(){
@@ -48,4 +44,22 @@ function makeDBBackup(){
     } catch(Exception $e){
         echo 'Erro: ' . $e->getMessage();
     }
+}
+
+function delActivitiesAuto(){
+    $p = new CrudAll;
+    $dataatual = date('Y-m-d');
+    $res = array();
+    $cmd = $p->con()->prepare("SELECT id from activities where accao = 'Login' and validade < :thisdate or accao = 'Logout' and validade < :thisdate ");
+    $cmd->bindValue(":thisdate", $dataatual);
+    $cmd->execute();
+    $res = $cmd->fetchAll(PDO::FETCH_ASSOC);
+    $idLen = count($res);
+    if($idLen > 0){
+        for($len=0;$len < $idLen; $len++){
+            $eachId = $res[$len]["id"];
+            $cmd = $p->delRec("activities", "id", $eachId);
+        }
+    }
+   
 }

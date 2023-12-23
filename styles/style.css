@@ -6,6 +6,14 @@
 
 .modalContainer > div{width:90%;margin:auto;}.modalContainerSell{width:85%;height:85%;margin-top:3%;display:flex}.modal-header{height:15%;}#modaltitle{text-align:right;color:var(--secondColor);margin-top:7px}.modal-body{height:75%;}.modal-body form{margin-top:3%}.modal-body label{font-weight:70;color:var(--secondColor);font-family: 'Times New Roman', Times;}.modal-body input{width:98%;height:26px;font-size:15px;padding-left:4px;outline-color:var(--colorOutline)}.modal-footer{width:100% !important;height:10%;}.modal-footer p{color:transparent}.tableContainer{width:99%;height:88%;margin:auto;overflow-y:auto;overflow-x:auto;display:flex;gap:10px;flex-wrap: wrap;}.tableContainer label{color:var(--color)}#paperPart{width:68%;}.remessaPaper, .remessaPaperRec{width:570px;height:800px;background:white;margin:3% auto 3% auto;box-shadow:0 0 14px 8px rgba(0, 0, 0, .2)}#elemPart{width:30%;margin-top:35px}.parentFooterDiv{position:relative;top:100%;width:100%;height:1px;top:100%;transition:.9s;display:flex;background:rgb(42, 139, 230);opacity: 0;}.printRemessaRecGrouped{width:40%;height:30px;margin:auto;background:rgb(13, 157, 240);color:white;clip-path:var(--sidesbtns)}.activeParentFooterDiv{position:relative;height:62%;top:-51%;background:rgba(3, 79, 109, 0.74);opacity:1;}.formContainer{width:90%;height:40%;display:flex;flex-direction:column;border:1.2px solid dodgerblue}.formContainer > div{width:90%;margin:auto}.form-header{height:30px;text-align:right;padding-top:3px}.form-body{height:calc(100% - 50px);}.form-footer{width:100% !important;height:20px;}#remessaForm{width:100%;height:100%;display:flex;flex-direction:column}#remessaForm > input{width:96%;height:28px;margin:12% auto 0 auto;padding-left:10px}#remessaBtns{width:100%;height:30%;display:flex;}#remessaBtns button, #printCleanPBc button{width:35%;height:45%;margin:auto;clip-path: var(--sidesbtns);background:rgba(0, 29, 39, .4);color:white;font-size:14px;transition:0.8s}#printRemessaButton:hover{background-color:dodgerblue;}#clearButton:hover{background-color:rgba(0, 29, 39, .9)}:is(.proprodiv, .stockprodiv){width:200px;height:255px;background-image:linear-gradient(to bottom, rgb(25, 139, 184), rgb(2, 58, 90));margin:10px 0 0 10px;clip-path:var(--sidemindiv);color:rgb(209, 216, 223);transition:0.6s;overflow-y:auto;}.proprodiv{height:200px}
 
+.proprodiv{ height:auto;}
+
+.proprodiv::after{
+    content: '_';
+    background:transparent
+}
+
+
 #recProListados{overflow-y: auto;}:is(.proprodiv, .stockprodiv, #recProListados)::-webkit-scrollbar{width:8px;height:8px;background:transparent}:is(.proprodiv, .stockprodiv, #recProListados)::-webkit-scrollbar-thumb{background:rgba(0,0,0,.4)}:is(.proprodiv, .stockprodiv):hover{transform: scale(1.1);}.stockprodivtitle{display:flex;padding:5px;color:#aeddf8}#pstitulo{margin-left:auto;}:where(.stockprodivMlables, .proprodivMlables){margin-left:4px}.stockprodivMlables > div{display:flex;margin-top:5px}.proprodivMlables > div{display: flex;margin-top:13px;}.stockprodivMlables > div > p{font-size:15px}.stockprodivMlables > div > p:last-child{margin-left:auto;padding-right:10px}.proprodivMlables > div > p:last-child{margin-left:auto;padding-right:10px}:is(.probuttonsdiv, .stockbuttonsdiv){width:90%;background:rgba(0, 0, 0, .2);margin:30px auto 0 auto;height:30px;display:flex;}:is(.updateStockB, .delStockB, .updateProB){height:80%;border:none;clip-path:var(--sidesbtns);}:is(.updateStockB, .updateProB){width:100px;background:dodgerblue;color:white;margin:3px 0 0 3px}.updateProB{width:120px;margin:auto}.delStockB{width:30px;background-color:gray;background-image:url("../icones/excluir1.png");background-size:20px;background-position:center;margin-left:auto;margin:3px 3px 0 auto}
 
 :is(.tableContainer, .pagWin, .pagManyWin, .definicoes, .modalContainer, .tableContent, #barCodePaperDef, )::-webkit-scrollbar-thumb{background:var(--scrollbarthumbColor);}
@@ -77,8 +85,6 @@ select{height:25px;font-size:12px}
 #vstockdef{width:90%}
 
 
-
-#paperPart{background:red;resize: auto;}
-
+#paperPart{resize: auto;}
 
 } 

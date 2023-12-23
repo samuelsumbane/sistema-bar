@@ -100,6 +100,7 @@ class Bar extends CrudAll{
 
     public function productData(){
         if($_POST["codeStock"]){
+            $promoValues = 0;
             $codeStock = $_POST["codeStock"];
             $sr = $this->selectRecord("controlodestock", "barcode", $codeStock);
             if($sr != false || $sr != null){
