@@ -232,7 +232,13 @@ class Bar extends CrudAll{
         if($_POST["dateprintbegin"]){
             $seletedDatebegin = $_POST["dateprintbegin"];
             $seletedDatefinal = $_POST["dateprintfinal"];
-            $recs = $this->selectActiRec($seletedDatebegin, $seletedDatefinal);
+            $horainicial = $_POST["horainicial"];
+            $horafinal = $_POST["horafinal"];
+            if($horainicial == "" || $horafinal == ""){
+                $horainicial = "00:00";
+                $horafinal = "23:59";
+            }
+            $recs = $this->selectActiRec($seletedDatebegin, $seletedDatefinal, $horainicial, $horafinal);
             echo json_encode($recs);
         }
     }

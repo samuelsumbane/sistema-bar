@@ -83,10 +83,21 @@ delActivitiesAuto();
                 <p>
                     <label for="">Data inicial</label><br>
                     <input type="date" name="dateprintbegin" id="dateprintbegin">
-                </p><br>
+                </p>
+                <br>
                 <p>
                     <label for="">Data final</label><br>
                     <input type="date" name="dateprintfinal" id="dateprintfinal">
+                </p>
+                <br>
+                <p>
+                    <label for="horainicial">Hora inicial</label><br>
+                    <input type="time" name="horainicial" id="horainicial">
+                </p>
+                <br>
+                <p>
+                    <label for="horafinal">Hora final</label><br>
+                    <input type="time" name="horafinal" id="horafinal">
                 </p>
                 <br>
                 <br>

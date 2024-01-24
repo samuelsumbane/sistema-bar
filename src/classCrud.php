@@ -219,7 +219,16 @@ class CrudAll{
      }
     }
 
-    function selectActiRec($seletedDateBegin, $seletedDateFinal){$result = array();$query = $this->pdo->prepare("SELECT * FROM activities WHERE dia >= :inicialdate AND dia <= :finaldate");$query->bindValue(':inicialdate', $seletedDateBegin);$query->bindValue(':finaldate', $seletedDateFinal);$query->execute();$result = $query->fetchAll(PDO::FETCH_ASSOC);return $result;}
+    function selectActiRec($seletedDateBegin, $seletedDateFinal, $horainicial, $horafinal){
+      $result = array();
+      $query = $this->pdo->prepare("SELECT * FROM activities WHERE dia >= :inicialdate AND dia <= :finaldate AND hora >= :horainicial AND hora <= :horafinal");
+      $query->bindValue(':inicialdate', $seletedDateBegin);
+      $query->bindValue(':finaldate', $seletedDateFinal);
+      $query->bindValue(':horainicial', $horainicial);
+      $query->bindValue(':horafinal', $horafinal);
+      $query->execute();
+      $result = $query->fetchAll(PDO::FETCH_ASSOC);
+      return $result;}
 
     function selectAllRecs($table){$res = array();$squery = $this->pdo->query("SELECT * FROM $table");$res = $squery->fetchAll(PDO::FETCH_ASSOC);return $res;}
 
@@ -240,8 +249,8 @@ class CrudAll{
     }
     // SELECT producto as proname, SUM(quantidade) as amount FROM activities WHERE dia >='2023-11-21' AND dia <='2023-11-21' group by proname
 
-    function actirecs($seletedDateBegin, $seletedDateFinal){ 
-      $query = $this->pdo->prepare("SELECT accao, producto as proname, SUM(quantidade) as qtd, SUM(totalpago) as amount FROM activities WHERE dia >='$seletedDateBegin' AND dia <='$seletedDateFinal' AND accao == 'Venda' group by proname ");
+    function actirecs($seletedDateBegin, $seletedDateFinal, $horainicial, $horafinal){ 
+      $query = $this->pdo->prepare("SELECT accao, producto as proname, SUM(quantidade) as qtd, SUM(totalpago) as amount FROM activities WHERE dia >='$seletedDateBegin' AND dia <='$seletedDateFinal' AND hora >= '$horainicial' AND hora <= '$horafinal' AND accao == 'Venda' group by proname ");
       $query->execute();
       $result = $query->fetchAll(PDO::FETCH_ASSOC);
       return $result;

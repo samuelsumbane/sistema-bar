@@ -67,11 +67,17 @@ $(document).ready(function () {
       var anof = datf.getFullYear()
       var dateprintfinal = `${anof}-${mesf}-${diaf}`
 
+      let horainicial = $('#horainicial').val()
+      let horafinal = $('#horafinal').val()
+      if(horainicial == "" || horafinal == ""){
+        horainicial = "00:00"
+        horafinal = "23:59"
+      }
       var action = $("#action").val()
       $.ajax({
         url: "barAction.php",
         method: 'POST',
-        data: {dateprintbegin:dateprintbegin, dateprintfinal:dateprintfinal, action:action}, 
+        data: {dateprintbegin:dateprintbegin, dateprintfinal:dateprintfinal, horainicial:horainicial, horafinal:horafinal, action:action}, 
         dataType: "json",
         success: function(data){
           if(data == false){
@@ -82,7 +88,7 @@ $(document).ready(function () {
             })
           }else{
             // console.table(data)
-            window.location = `../src/ativiRecibo.php?printdateinicial=${dateprintbegin}&printdatefinal=${dateprintfinal}`
+            window.location = `../src/ativiRecibo.php?printdateinicial=${dateprintbegin}&printdatefinal=${dateprintfinal}&horainicial=${horainicial}&horafinal=${horafinal}`
           }
         }, error: function(){
           alert("Houve um erro desconhecido")

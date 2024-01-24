@@ -72,6 +72,8 @@ body{display:fixed;width:100%;height:100%;}
 
             <input type="hidden" name="" id="dateinicial" value="<?php echo $_GET["printdateinicial"] ?>">
             <input type="hidden" name="" id="datefinal" value="<?php echo $_GET["printdatefinal"] ?>">
+            <input type="hidden" name="" id="horainicial" value="<?php echo $_GET["horainicial"] ?>">
+            <input type="hidden" name="" id="horafinal" value="<?php echo $_GET["horafinal"] ?>">
 
             <?php
                 $totalsaida = 0;

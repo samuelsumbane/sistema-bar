@@ -2,6 +2,8 @@
 
 let inicialdate = document.querySelector("#dateinicial").value;
 let finaldate = document.querySelector("#datefinal").value;
+let horainicial = document.querySelector("#horainicial").value;
+let horafinal = document.querySelector("#horafinal").value;
 let registrosPorPagina = 10; // Número de registros a serem carregados a cada vez
 let intervaloDeTempo = 1000; // Intervalo de tempo em milissegundos entre os carregamentos
 let indiceInicial = 0; // Índice inicial para carregamento dos registros
@@ -14,7 +16,7 @@ function exibirTotais() {
     $.ajax({
         url: 'selectActivVtotais.php',
         method: "POST",
-        data: { inicialdate: inicialdate, finaldate: finaldate, acao:"valorestotais"},
+        data: { inicialdate: inicialdate, finaldate: finaldate, horainicial:horainicial, horafinal:horafinal, acao:"valorestotais"},
         dataType: "json",
         success: function (data) {
             console.log(data[0])
@@ -61,7 +63,7 @@ function carregarRegistros() {
         $.ajax({
             url: 'selectActivitiesRows.php',
             method: "POST",
-            data: { inicialdate: inicialdate, finaldate: finaldate, acao: "selectactivities"},
+            data: { inicialdate: inicialdate, finaldate: finaldate, horainicial:horainicial, horafinal:horafinal, acao: "selectactivities"},
             dataType: "json",
             success: function (data) {
                 resolve(data);
@@ -106,7 +108,7 @@ let intervalo = setInterval(function () {
 $.ajax({
     url: 'selectActivitiesRows.php',
     method: "POST",
-    data: { inicialdate: inicialdate, finaldate: finaldate, acao:"selectactivitiesandqtd" },
+    data: { inicialdate: inicialdate, finaldate: finaldate, horainicial:horainicial, horafinal:horafinal, acao:"selectactivitiesandqtd" },
     dataType: "json",
     success: function (data) {
         let proandqtd = data.filter(e=>e.accao == "Venda" || e.accao == "Stock");
