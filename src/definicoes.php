@@ -18,6 +18,7 @@ include_once 'conexao.php';
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Definições - Cande's bar</title>
+    <script src="../scripts/sweetalert.min.js"></script>
 
 </head>
 
@@ -52,17 +53,32 @@ include_once 'conexao.php';
             <!-- bottom side -->
             <div class="bottomPrincContainerDef">
                 
-                <div id="alertasDivDef">
-                    <p id='alertTextSDef'>Notificar quando o estoque de um producto for inferior a:</p>
-                    <input type="number" name="vstockdef" id="vstockdef" value="<?php if($alldeftables != false){ echo $alldeftables[0]['limiteinfe'];} ?>">
-                    <p id="alertDefError" class="hiddenP">O valor deve ser um numero</p>
+                <div class="defLeftSide">
+                    <div id="">
+                        <p id='alertTextSDef'>Notificar quando o estoque de um producto for inferior a:</p>
+                        <input type="number" name="vstockdef" id="vstockdef" value="<?php if($alldeftables != false){ echo $alldeftables[0]['limiteinfe'];} ?>">
+                        <p id="alertDefError" class="hiddenP">O valor deve ser um numero</p>
+                    </div>
+
+                    <?php 
+                            if($_SESSION['nivel'] != 0){
+                                ?>
+                                    <div style="min-height:100px;height:18%">
+                                        <p id='alertTextSDef' >Fazer backup do banco de dados</p>
+                                        <button id='backupbtn'>Fazer Backup</button>
+                                    </div>
+                                <?php 
+                            }
+                     ?> 
                 </div>
+               
             </div>
         </div>
     </div>
 
 </body>
 <script src="../scripts/script.js"></script>
+<script src="../scripts/alerts.js"></script>
 <script src="../scripts/defScript.js"></script>
 <script src="../scripts/JsBarcode.all.min.js"></script>
 
