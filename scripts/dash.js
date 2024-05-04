@@ -10,10 +10,10 @@ function selectYears(){
             dataType: "json",
             success: function(data){
                 for(let a = 0;a < data.length;a++){
-                var y = data[a]["ano"];
-                var year = `${y}`;
-                var allY = [year];
-                $("#yearSells").select2({data: allY})
+                    var y = data[a]["ano"];
+                    var year = `${y}`;
+                    var allY = [year];
+                    $("#yearSells").select2({data: allY})
                 }
             }, error: function(){alert("Um erro inesperado!")}});
                 
@@ -78,4 +78,3 @@ const updateDateTime = ()=>{
 }
 
 updateDateTime()
-

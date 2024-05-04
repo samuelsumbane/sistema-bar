@@ -18,3 +18,12 @@ const erroAoFazerBackup = ()=>{
 }
 
 
+const sessionExpired = ()=>{
+    swal({
+        icon:'warning',
+        title: 'Sessão expirada',
+        text:`Sua sessão expirou, por favor clique em "OK" para fazer o novo login.`
+    }).then(()=>{
+        location.reload()
+    })
+}

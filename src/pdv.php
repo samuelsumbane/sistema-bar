@@ -233,6 +233,9 @@ $data = date('d/m/Y');
 
     <script src="../scripts/listSellUser.js"></script>
     <script src="../scripts/script.js"></script>
+    <script src="../scripts/alerts.js"></script>
+    <script src="../scripts/usertimeout.js"></script>
+
 
 </body>
 </html>

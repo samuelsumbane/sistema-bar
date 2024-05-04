@@ -84,6 +84,7 @@ $lucroTotal = json_encode($lucro);
 
     <script src="../scripts/chart.js"></script>
 
+
   <script>document.querySelector('.home').setAttribute('id', 'activo')</script>
 
 </head>
@@ -402,7 +403,23 @@ $lucroTotal = json_encode($lucro);
 <script src="../scripts/jquery-3.3.1.js"></script>
 <script src="../scripts/select2.min.js"></script>
 <script src="../scripts/submain.js"></script>
+
+
 <script src="../scripts/script.js"></script>
+
+
 <script src="../scripts/dash.js"></script>
+
+
+<!-- <script src="../scripts/dash.js" onload="loadSecondScript()"></script>
+
+<script>
+  function loadSecondScript() {
+    var secondScript = document.createElement('script');
+    secondScript.src = "../scripts/usertimeout.js";
+    document.body.appendChild(secondScript);
+  }
+</script> -->
+
 
 </html>

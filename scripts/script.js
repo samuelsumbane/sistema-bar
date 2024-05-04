@@ -19,6 +19,10 @@ var currentTheme = localStorage.getItem("candebarMode");
 var elem = document.body;
 const tlucro = document.querySelector(".hiddentlucro");
 
+// window.onload = function() {
+//     trackUserActivity();
+//     setInterval(checkInactivity, 1000); // Verifica a inatividade a cada segundo
+// };
 
 document.addEventListener('keydown', (event) => {
     var keyValue = event.key;
@@ -51,7 +55,6 @@ hamburger.addEventListener("click", () => {
     slide_botoes.classList.toggle('active')
     botao_activo.classList.toggle("active");
     leavebutton.classList.toggle("active");
-
 })
 
 if(bgModal){
@@ -97,14 +100,6 @@ function loading(){document.getElementById("flashingModal").style.display = "non
 
 
 
-
-
-
-
-
-
-
-
 // hamburger.forEach(n => n.addEventListener("click", () => {
 //     leftbuttonstooltips.classList.remove("active");
 
@@ -115,5 +110,3 @@ function loading(){document.getElementById("flashingModal").style.display = "non
 //     hamburger.classList.remove("active");
 //     navMenu.classList.remove("active");
 // }))
-
-
