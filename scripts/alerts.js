@@ -27,3 +27,11 @@ const sessionExpired = ()=>{
         location.reload()
     })
 }
+
+const refreshNeeded = ()=>{
+    swal({
+        icon: 'info',
+        title: 'Actualização da pagina necessária',
+        text: 'Por favor, actualize a pagina para ter dados actualizados.'
+    })
+}

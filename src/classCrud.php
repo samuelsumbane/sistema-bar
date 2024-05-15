@@ -69,6 +69,38 @@ class CrudAll{
 
     function con(){$conn = new PDO('sqlite:barBank.sqlite');return $conn;}
 
+    // function insertData($tabela, $dados) {
+    //   // Construir a parte da query com os nomes das colunas e os placeholders
+    //   $colunas = implode(', ', array_keys($dados));
+    //   $placeholders = ':' . implode(', :', array_keys($dados));
+    //   // Preparar a query SQL
+    //   $stmt = $this->pdo->prepare("INSERT INTO $tabela ($colunas) VALUES ($placeholders)");
+    //   // Vincular os valores aos placeholders
+    //   foreach ($dados as $chave => $valor) {
+    //     $stmt->bindValue(":$chave", $valor);
+    //   }
+    //   // Executar a query
+    //   $stmt->execute();
+    // }
+  
+    // function updateData($tabela, $dados, $condicao) {
+    //   // Construir a parte da query com os pares coluna=placeholder
+    //   $pares = [];
+    //   foreach ($dados as $coluna => $valor) {
+    //       $pares[] = "$coluna = :$coluna";
+    //   }
+    //   $paresString = implode(', ', $pares);
+    //   // Preparar a query SQL
+    //   $stmt = $this->pdo->prepare("UPDATE $tabela SET $paresString WHERE $condicao");
+    //   // Vincular os valores aos placeholders
+    //   foreach ($dados as $chave => $valor) {
+    //     $stmt->bindValue(":$chave", $valor);
+    //   }
+    //   // Executar a query
+    //   $stmt->execute();
+    // }
+  
+
     public function buscarDadosPorUsuario($table, $usuario){
       $res = array();
       $cmd = $this->pdo->prepare("SELECT * FROM $table where usuario = :u");
@@ -132,18 +164,30 @@ class CrudAll{
 
 
     function gravarVendas($produto, $pesoliquido, $quantidade, $valorcusto, $valorunico, $valortotal, $desconto, $lucro, $mes, $ano){
-      $cmd = $this->pdo->prepare("INSERT INTO controlodevendas(producto, pesoliquido, quantidade, valorcusto, valorunico, valortotal, desconto, lucro, mes, ano) VALUES(:pro, :pl, :qua, :vc, :vu, :vt, :dc, :lu, :mes, :ano) ");
-      $cmd->bindValue(":pro", $produto);
-      $cmd->bindValue(":pl", $pesoliquido);
-      $cmd->bindValue(":qua", $quantidade);
-      $cmd->bindValue(":vc", $valorcusto);
-      $cmd->bindValue(":vu", $valorunico);
-      $cmd->bindValue(":vt", $valortotal);
-      $cmd->bindValue(":dc", $desconto);
-      $cmd->bindValue(":lu", $lucro);
-      $cmd->bindValue(":mes", $mes);
-      $cmd->bindValue(":ano", $ano);
-      $cmd->execute();
+      try {
+        $this->pdo->beginTransaction();
+        // Execute suas operações de banco de dados aqui (por exemplo, inserções, atualizações, exclusões).
+        
+        $cmd = $this->pdo->prepare("INSERT INTO controlodevendas(producto, pesoliquido, quantidade, valorcusto, valorunico, valortotal, desconto, lucro, mes, ano) VALUES(:pro, :pl, :qua, :vc, :vu, :vt, :dc, :lu, :mes, :ano) ");
+        $cmd->bindValue(":pro", $produto);
+        $cmd->bindValue(":pl", $pesoliquido);
+        $cmd->bindValue(":qua", $quantidade);
+        $cmd->bindValue(":vc", $valorcusto);
+        $cmd->bindValue(":vu", $valorunico);
+        $cmd->bindValue(":vt", $valortotal);
+        $cmd->bindValue(":dc", $desconto);
+        $cmd->bindValue(":lu", $lucro);
+        $cmd->bindValue(":mes", $mes);
+        $cmd->bindValue(":ano", $ano);
+        $cmd->execute();
+        // Se tudo estiver bem, confirme a transação.
+        $this->pdo->commit();
+      } catch (PDOException $e) {
+          // Em caso de erro, reverta a transação.
+          $this->pdo->rollback();
+          echo "Erro: " . $e->getMessage();
+      }
+
     }
 
 

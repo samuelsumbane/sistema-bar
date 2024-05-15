@@ -114,11 +114,9 @@ class Bar extends CrudAll{
                 $promoValues = $promo;
             }else{
                 $promoValues = $this->selectRecord("promocoes", "codigo", $codeStock);
-
             }
             
             $data = [$rs, $promoValues];
-
             echo json_encode($data);
         }
     }
@@ -143,14 +141,15 @@ class Bar extends CrudAll{
         $desconto = $_POST["dctd"];
         $usernamelogged = $_POST["usernamelogged"];
         $lucro = ($valorunico - $valorcusto) * $quantidade;
-        $currentMonthStr = $this->returnComplenteMonth(date('m'));
+        $mes = date('m');
+        $currentMonthStr = $this->returnComplenteMonth($mes);
         $currentYear = date('Y');
 
-        $this->saveActivity("Venda", $produto, $pesoliquido, $quantidade, $valortotal, $usernamelogged, $this->retornarData(), $this->retornarHora(), $this->venciDate());
         $this->gravarVendas($produto, $pesoliquido, $quantidade, $valorcusto, $valorunico, $valortotal, $desconto, $lucro, $currentMonthStr, $currentYear);
+        
         $this->increaseStock($quantidade, $quantidade, $codetd);
         
-
+        $this->saveActivity("Venda", $produto, $pesoliquido, $quantidade, $valortotal, $usernamelogged, $this->retornarData(), $this->retornarHora(), $this->venciDate());
     }
 
     public function addStockProducts(){

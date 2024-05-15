@@ -47,7 +47,8 @@ if($_SESSION['nivel'] != 1){
                     <a href="definicoes"><button style='font-size:1.13vw;margin:5% 0 0 44%;background:rgb(217, 238, 248);color:black'>Definições</button></a>
                 </div>
             </div>
-
+            <!-- <button id="backupbtn" type="hidden"></button> -->
+            <input type="hidden" name="" id="backupbtn">
             <!-- bottom side -->
             <div class="bottomPrincContainerDef">
                 <div style="width:35%;height:100%;display:flex;flex-direction: column;margin-right:3%">

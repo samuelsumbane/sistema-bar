@@ -172,6 +172,7 @@ $hora = date('H:i');
     <script src="../scripts/sweetalert.min.js"></script>
     <script src="../scripts/jquery.dataTables.min.js"></script>
     <script src="../scripts/script.js"></script>
+    <script src="../scripts/alerts.js"></script>
     <script src="../scripts/crudStock.js"></script>
     <script src="../scripts/selectStock.js"></script>
 

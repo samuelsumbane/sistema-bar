@@ -19,7 +19,7 @@ function exibirTotais() {
         data: { inicialdate: inicialdate, finaldate: finaldate, horainicial:horainicial, horafinal:horafinal, acao:"valorestotais"},
         dataType: "json",
         success: function (data) {
-            console.log(data[0])
+            // console.log(data[0])
             let vendavalue = 0
             let stockvalue = 0
 

@@ -1,5 +1,4 @@
 
-
 var inactivityTime = 0;
 var timeout = 300000; // 5 minutos em milissegundos
 

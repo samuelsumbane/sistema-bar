@@ -139,7 +139,9 @@ $(document).ready(function () {
             $('#stockForm')[0].reset();
             $(".trtable").remove();
             $("#bg-modal").css("top", "-100%");
-            window.location = "stock.php"
+            // window.location = "stock.php"
+            refreshNeeded()
+
             // console.table(data)
           }, error: function(){
             alert('Houve um erro desconhecido!')

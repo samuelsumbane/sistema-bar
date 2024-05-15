@@ -2,25 +2,24 @@ var barcode = '';
 var bInput = '';
 var barcodeC = 0;
 
+
 document.addEventListener("keydown", function (e) {
 
   const textInput = String.fromCharCode(e.keyCode);
   if (e.keyCode == 13 && barcode.length > 3) {
     e.preventDefault()
-
     // alert('clicked')
     
-    if(bInput == ''){
+    if(bInput == ""){
         bInput = barcode
-        document.querySelector("#sellProComboBox").value = "";
-        document.querySelector("#qtddpro").innerHTML = ""
+        clearSellInputs()
         cleanSellFilds()
 
         barcodeC = 1
 
       if(barcode != ""){
         // codeResults(barcode, barcodeC)
-        let codeStock = barcode
+        let codeStock = parseInt(barcode)
         var action = "productData"
         $("#selectedCode").val(barcode)
         if(codeStock == isNaN){    
@@ -42,6 +41,8 @@ document.addEventListener("keydown", function (e) {
                             $("#nGarafas").val(data[1]["nprodutos"])
                             $("#vPromo").val(data[1]["vpromo"])
                         }
+
+                        $("#action").val("sellProducts")
                         $("#productQtd").val(barcodeC)
                         $('#nameproinput').val(data[0]["producto"])
         
@@ -57,7 +58,6 @@ document.addEventListener("keydown", function (e) {
                         }
                         
                         $("#srestante").val(srestante);
-        
                         $('#plproinput').val(data[0]["pesoliquido"])
                         $("#valorCustoSell").val(data[0]["valorcusto"])
                         $("#valorvenda").val(data[0]["valorvenda"])
@@ -66,14 +66,12 @@ document.addEventListener("keydown", function (e) {
                         $("#selectedCode").val(data[0]["codigo"])
                         $("#proCode").val(data[0]["codigo"])
                         let thisproCode = data[0]["codigo"]
-                    
                         $("#addSellPro").attr('disabled', false)
                     
                         document.querySelector("#qtddpro").innerHTML = `Total de productos por unidade ${srestante}`
         
                         calcProCost(barcodeC, thisproCode)
                     }
-                    //
                 } else {
                     swal({ icon: "error", title: "Nenhum producto encontrado", text: "o código scaneado não foi atribuiado a nenhum producto" })
                 }
@@ -81,6 +79,7 @@ document.addEventListener("keydown", function (e) {
             })
         }
       }
+
 
     }else{
         if(barcode == bInput){
@@ -95,8 +94,14 @@ document.addEventListener("keydown", function (e) {
         }
     }
     barcode = '';
+
   }else{
     barcode += textInput;
   }
 });
 
+
+function clearSellInputs() {
+    document.querySelector("#sellProComboBox").value = "";
+    document.querySelector("#qtddpro").innerHTML = "";
+}
