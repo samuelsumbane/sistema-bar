@@ -45,7 +45,6 @@ function exibirTotais() {
             }
 
            
-
            document.querySelector("#recdiv").innerHTML += `<p style="padding-left:8px">Valor total de vendas: &nbsp <strong> ${parseFloat(vendavalue).toFixed(2)} </strong> MT</p>
             <p style="padding-left:8px">Valor total de stock recebido: &nbsp &nbsp &nbsp <strong> ${parseFloat(stockvalue).toFixed(2)} </strong> MT</p>`;  
         },
